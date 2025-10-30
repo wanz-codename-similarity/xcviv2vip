@@ -20,7 +20,7 @@ const BYPASS_ROLES = ["developer"];
 export const INFO_TEXT = "Yang menang itu yang di private, bukan di public #WanzOfficial";
 
 const config = {
-  domain: "http://titanic.kandigpanel.my.id",
+  domain: "http://wanztidakcabul.kantinvps.my.id",
   port: 3003,
   creator: "Wanz Official",
 };
