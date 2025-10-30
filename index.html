@@ -1,0 +1,350 @@
+<!--
+═════════════════════════════
+            🔰 WANZ OFFICIAL               
+══════════════════════════════
+ ⚠️  JANGAN HAPUS CREDIT DEVELOPER
+══════════════════════════════
+ 📱 WhatsApp : wa.me/6283898286223
+ 📸 Instagram : instagram.com/wan_xzyaa
+═════════════════════════════
+-->
+
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>XCVI SIMILARITY — WEB BUG</title>
+  
+  <meta name="title" content="XCVI SIMILARITY — WEB BUG" />
+  <meta name="description" content="Panel koneksi & web bug dari Wanz Official. Cek status server, pairing code, dan kontrol koneksi langsung dari browser." />
+  <meta name="keywords" content="wanzdev, web bug, whatsapp connect, xcvi similarity, pairing code, bot wa" />
+  <meta name="author" content="WANZ OFFICIAL" />
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wanz-xcvi-codename.biz.id" />
+  <meta property="og:title" content="XCVI SIMILARITY — WEB BUG" />
+  <meta property="og:description" content="Panel koneksi & web bug dari Wanz Official. Cek status server, pairing code, dan kontrol koneksi langsung dari browser." />
+  <meta property="og:image" content="https://files.catbox.moe/a8uk9h.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://wanz-xcvi-codename.biz.id" />
+  <meta name="twitter:title" content="XCVI SIMILARITY— WEB BUG" />
+  <meta name="twitter:description" content="Panel koneksi & web bug dari Wanz Official. Cek status server, pairing code, dan kontrol koneksi langsung dari browser." />
+  <meta name="twitter:image" content="https://files.catbox.moe/a8uk9h.jpg" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ⚡ PRECONNECT OPTIMIZATION -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+<!-- Popup Konfirmasi Hapus Sesi -->
+<div id="confirmDeleteOverlay" class="wanz-popup-overlay" style="display:none;">
+  <div class="wanz-popup">
+    <div class="wanz-icon"></div>
+    <div class="wanz-body">
+      <h4>Hapus Sesi?</h4>
+      <p id="confirmDeleteText">Apakah kamu yakin ingin menghapus sesi ini?</p>
+      <div class="wanz-actions">
+        <button id="cancelDeleteBtn" class="btn">Batal</button>
+        <button id="confirmDeleteBtn" class="btn primary">Hapus</button>
+      </div>
+      <div class="small-muted">Tindakan ini tidak dapat dibatalkan</div>
+    </div>
+  </div>
+</div>
+
+<!-- 🔥 Popup Loading Seram -->
+<div id="horrorPopup" class="horror-popup hidden">
+  <div class="horror-content">
+    <h2 id="horrorTitle" class="flicker-text">Processing...</h2>
+    <p id="horrorTarget" class="target-text"></p>
+    <div class="horror-loader"></div>
+  </div>
+</div>
+
+<video id="bgVideo" autoplay muted playsinline loop preload="auto" style="display:block;">
+  <source src="https://files.catbox.moe/mr8p43.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<div id="cekbanModal" class="cekban-modal" aria-hidden="true">
+  <div class="cekban-content">
+    <button id="cekbanClose" class="cekban-close">✖</button>
+    <h2 class="cekban-title">Cek Ban WhatsApp</h2>
+    <p class="cekban-sub">Pastikan sender anda aktif</p>
+
+    <div class="cekban-input-area">
+      <div class="cekban-field">
+        <input id="cekbanPhone" type="tel" placeholder="Masukkan nomor WhatsApp..." />
+      </div>
+      <button id="cekbanCheckBtn" class="cekban-action-btn">
+        <span class="cekban-btn-text">Cek Sekarang</span>
+      </button>
+    </div>
+
+    <div id="cekbanLoader" class="cekban-loader">
+      <div class="spinner"></div>
+      <p>Memeriksa status nomor...</p>
+    </div>
+
+    <div id="cekbanResult" class="cekban-result"></div>
+  </div>
+</div>
+
+
+
+
+
+<!-- 🚨 FULLSCREEN MAINTENANCE POPUP -->
+<div id="maintenancePopup" class="maintenance-popup">
+  <div class="maintenance-content">
+    <h1>⚙️ SERVER SEDANG MAINTENANCE</h1>
+    <p>Harap tunggu sampai proses selesai...</p>
+    <button class="maintenance-btn" onclick="window.open('https://wa.me/6283898206223','_blank')">
+      Hubungi Admin
+    </button>
+  </div>
+</div>
+
+
+<div class="topbar">
+
+<div id="sidebar" class="sidebar" style="display:none;">
+  <!-- ==== SIDEBAR ==== -->
+<div class="sidebar-content">
+  <div class="sidebar-section">
+    <h3 class="sidebar-title">ACCOUNT</h3>
+    <p><b>Username:</b> <span id="ui-username">-</span></p>
+    <p><b>Role:</b> <span id="ui-role">-</span></p>
+    <p><b>Dibuat:</b> <span id="ui-created">-</span></p>
+    <p><b>Expired:</b> <span id="ui-expired">-</span></p>
+  </div>
+
+  <hr style="opacity:0.1;margin:10px 0;">
+
+  <button id="cekBanBtn" class="cekban-main-btn">CEK BANNED</button>
+
+  <hr style="opacity:0.1;margin:10px 0;">
+
+  <!-- === LIST SESI === -->
+  <div id="sessionsList" class="sidebar-sessions">
+    <div class="no-sessions">Belum ada sesi aktif.</div>
+  </div>
+
+  <!-- tombol tambah sender -->
+  <button id="addSenderBtn" class="sidebar-btn add-sender-btn">+ Tambah Sender</button>
+
+  <!-- tombol logout di bawah -->
+  <div class="sidebar-footer">
+    <button id="logoutSidebarBtn" class="sidebar-btn logout-btn">Logout</button>
+  </div>
+</div>
+</div>
+
+  <div class="brand">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="wa">
+    <span>ACCOUNT</span>
+  </div>
+  <div class="brand">
+    <span>SATORU</span>
+    <img src="https://files.catbox.moe/fgna1q.jpg" alt="logo">
+  </div>
+</div>
+
+<div id="infoBanner">
+  <marquee behavior="scroll" direction="left" scrollamount="2">
+    Memuat info...
+  </marquee>
+</div>
+
+<!-- LOGIN SCREEN -->
+<div id="loginRoot" class="login-root">
+  <div class="login-card section">
+  <h1 class="similarity-title">XCVI  SIMILARITY V2</h1>
+    <h2>Welcome Back !</h2>
+    <div class="small">Masukkan username & password</div>
+    <div id="loginError" class="error" style="display:none;"></div>
+    <input id="loginUser" type="text" placeholder="Username" autocomplete="username" />
+    <input id="loginPass" type="password" placeholder="Password" autocomplete="current-password" />
+    <button id="loginBtn" class="primary">Login</button>
+
+    <div class="meta" style="margin-top:12px;">
+      <button id="buyPremiumBtn">Buy Premium Account</button>
+      <div id="premiumPopup" class="premium-popup">
+  <div class="popup-content">
+    <button class="close-popup" onclick="closePopup()"></button>
+    <h3 class="popup-title">Buy Premium Access</h3>
+    <p class="popup-sub">Choose your preferred platform</p>
+    <div class="popup-grid">
+      <div class="platform-block wa" onclick="window.open('https://wa.me/6283898206223','_blank')">
+        <span>WhatsApp Owner</span>
+      </div>
+      <div class="platform-block tg" onclick="window.open('https://t.me/wanz_xcvi','_blank')">
+        <span>Telegram Owner</span>
+      </div>
+      <div class="platform-block ig" onclick="window.open('https://instagram.com/wan_xzyaa','_blank')">
+        <span>Instagram Owner</span>
+      </div>
+    </div>
+  </div>
+</div>
+      <button id="logoutLocalBtn" class="ghost" style="display:none;">Logout</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- APP PANEL (hidden until login) -->
+<div id="appPanel">
+  <div class="container">
+    <div style="width:100%;max-width:980px">
+      <div class="section">
+      <h1 class="similarity-title">XCVI  SIMILARITY V2</h1>
+        <h2>Server Status</h2>
+        <div id="statusBox" class="statusBox">Checking server...</div>
+      </div>
+      
+
+      <div class="section" id="pairSection" style="margin-top:16px;">
+      <!-- Tombol Sender Global -->
+<button id="globalSenderBtn" class="ghost" style="margin-top:10px;">
+  Gunakan Sender Global
+</button>
+        <h2 id="pairTitle">Generate Pairing Code</h2>
+        <input id="name" type="text" placeholder="Example: bot">
+        <input id="phone" type="tel" placeholder="Nomor WhatsApp (628...)">
+        <button id="connectBtn" class="primary">GENERATE CODE</button>
+      </div>
+
+    <div class="section" id="sendSection" style="display:none;margin-top:16px;">
+  <h2>Target Execution</h2>
+
+  <!-- Input nomor tujuan -->
+  <input id="targetInput" type="tel" placeholder="Nomor target (ex: 628xxx)" autocomplete="off" />
+
+  <!-- Button utama -->
+  <button id="mainOptionBtn" class="primary" style="margin-top:10px;">Pilih Menu Attack</button>
+
+  <!-- === PILIH MENU ATTACK (trigger only) === -->
+<div id="optionsBlock" style="margin-top:12px;">
+  <button id="openAttackModalBtn" class="primary" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+    <svg viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M3.4 20.4l17.3-7.2c.9-.4.9-1.7 0-2L3.4 4c-.8-.3-1.5.3-1.3 1.2l2 6.7c.1.5.6.8 1.1.8h6.8c.2 0 .3.2.2.4l-1.8 5.9c-.2.7.5 1.3 1.1.9z"/></svg>
+    Pilih Menu Attack
+  </button>
+</div>
+
+<!-- === Attack Modal (besar, geserable, pilih dengan klik tengah) === -->
+<div id="attackModal" class="attack-modal" aria-hidden="true">
+  <div class="attack-modal-box" role="dialog" aria-modal="true" aria-label="Pilih Menu Attack">
+    <button class="attack-modal-close" id="attackModalClose" aria-label="Tutup"></button>
+    <h3 class="attack-modal-title">Pilih Menu Attack</h3>
+    <p class="attack-modal-sub">Geser untuk melihat semua pilihan</p>
+
+    <div class="attack-options-wrap">
+      <div class="attack-options" id="attackOptions">
+        <!-- contoh option:
+             data-endpoint wajib -> dipakai oleh sendBtnAction
+             data-key (opsional) -> id internal -->
+        <div class="attack-item" data-endpoint="send">Force Close</div>
+        <div class="attack-item" data-endpoint="send2">Invisible</div>
+        <div class="attack-item" data-endpoint="send3">Blank-Andro</div>
+        <div class="attack-item" data-endpoint="send4">Crash-IOS</div>
+        <div class="attack-item" data-endpoint="send5">Ghost-Flood</div>
+        <div class="attack-item" data-endpoint="send6">Null-Stream</div>
+        <div class="attack-item" data-endpoint="send7">Satoru Crash</div>
+        <!-- tambahkan item lain sesuai kebutuhan -->
+      </div>
+    </div>
+
+    <div class="attack-modal-actions">
+      <button id="attackSelectConfirm" class="primary" style="display:none;">Pilih</button>
+      <button id="attackSelectCancel" class="ghost">Batal</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Tombol Kirim (updated) -->
+<button
+  id="sendBtn"
+  type="button"
+  class="primary send-btn"
+  style="margin-top:16px;width:100%;padding:16px;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;"
+  title="Kirim attack ke target (pastikan session & nomor terisi)"
+  data-endpoint="send"
+  data-label="Force Close"
+  aria-label="Kirim"
+  aria-busy="false"
+>
+  <span class="send-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" style="width:20px;height:20px;">
+      <path d="M3.4 20.4l17.3-7.2c.9-.4.9-1.7 0-2L3.4 4c-.8-.3-1.5.3-1.3 1.2l2 6.7c.1.5.6.8 1.1.8h6.8c.2 0 .3.2.2.4l-1.8 5.9c-.2.7.5 1.3 1.1.9z"/>
+    </svg>
+  </span>
+
+  <span class="send-text">Send Bug</span>
+</button>
+
+  <p id="sendStatus" class="text-sm mt-4 text-gray-400"></p>
+
+  <button id="disconnectBtn" class="ghost" style="margin-top:14px;">Disconnect</button>
+</div>
+
+      <div class="section" style="margin-top:16px;">
+        <h2>Console Log</h2>
+        <div id="log" class="log"><div>> Ready.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal overlay -->
+<div id="overlay" class="overlay">
+  <div class="modal">
+    <div id="loader" class="spinner"></div>
+    <div id="modalHint" style="color:var(--green-dim)">Menunggu kode...</div>
+    <div id="modalCodes" style="margin-top:10px;"></div>
+<button id="copyCodeBtn" class="primary" style="margin-top:8px;">Copy</button>
+<button id="modalClose" class="ghost" style="margin-top:8px;">Tutup</button>
+  </div>
+</div>
+
+<!-- ⚡️ iPhone-Style Toast Notification -->
+<div id="toast" class="toast">
+  <div class="toast-content">
+    <div class="toast-logo-wrap">
+      <img src="https://files.catbox.moe/fgna1q.jpg" alt="WANZ Logo" class="toast-logo">
+    </div>
+    <div class="toast-body">
+      <div class="toast-title">SATORU GOJO</div>
+      <div class="toast-text" id="toastText">Pesan notifikasi akan muncul di sini</div>
+    </div>
+  </div>
+</div>
+<!-- 🌐 POPUP SENDER GLOBAL -->
+<div id="globalSenderPopup" class="global-popup">
+  <div class="global-popup-content">
+    <button id="closeGlobalPopup" class="close-global">&times;</button>
+    <h2 class="popup-title">Pilih Sender Global</h2>
+    <p class="popup-sub">Pilih salah satu sender yang aktif</p>
+    <div id="senderList" class="sender-list">
+      <div class="loading">Memuat daftar sender...</div>
+    </div>
+  </div>
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2025 - Wanz Official</p>
+  <p>📞0838-9820-6223 - xcvispport@gmail.com</p>
+</footer>
+<script src="script.js" defer></script>
+</body>
+</html>
